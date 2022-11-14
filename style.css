@@ -1,0 +1,8 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+option, select {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95em;
+}
