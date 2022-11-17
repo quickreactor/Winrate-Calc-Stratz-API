@@ -28,6 +28,7 @@ fetch("members.json")
   .then(json => {
     var savedPerson = parseInt(localStorage.getItem('person'));
     var savedTeammate = parseInt(localStorage.getItem('teammate'));
+    json.sort((a,b) => a.steamAccount.name.localeCompare(b.steamAccount.name));
     json.forEach(e => {
     personDropdown.innerHTML += `<option value=${e.steamAccount.id} ${e.steamAccount.id === savedPerson ? 'selected' : ''}>${e.steamAccount.name}</option>`;
     teammateDropdown.innerHTML += `<option value=${e.steamAccount.id} ${e.steamAccount.id === savedTeammate ? 'selected' : ''}>${e.steamAccount.name}</option>`;
@@ -120,7 +121,7 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
         //console.log(dPlayer.hero.displayName);
         return dPlayer.hero.displayName === dHero;
     });
-    console.log(qualGames.length);
+    //console.log(qualGames.length);
     // winningGames = qualifyingGames.filter(gruntyWasRadiant === didRadiantWin)
     var winningGames = getWins(qualGames, deuteragonist);
     //console.log(winningGames);
