@@ -128,10 +128,10 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
     var heroWinRate = Math.floor((winningGames.length / qualGames.length) * 100);
     var resultsDiv = document.querySelector(".results");
     var teammateName = teammateDropdown.options[teammateDropdown.selectedIndex].text;
-    var heroWinRateText = `You have a ${heroWinRate}% win-rate when ${teammateName} played ${dHero} over ${qualGames.length} games`;
-    var totalWinRateText = `Win rate overall with ${teammateName}: ${totalWinRate}%`;
+    var heroWinRateText = `You have a ${heroWinRate}% win-rate when ${teammateName} played ${dHero} over ${qualGames.length} games.`;
+    var totalWinRateText = `Win rate overall with ${teammateName}: ${totalWinRate}%.`;
     var difference = heroWinRate - totalWinRate;
-    var differenceText = `You are ${difference}% ${difference > 0 ? 'more': 'less'} likely to win when ${teammateName} picks ${dHero}.`
+    var differenceText = `You are ${difference > 0 ? difference : (difference * - 1)}% ${difference > 0 ? 'more': 'less'} likely to win when ${teammateName} picks ${dHero}.`
     if (qualGames.length === 0) {
       resultsDiv.innerText = `
       You havent played any games where ${teammateName} has played ${dHero} in your last 100 games together.`;
