@@ -35,7 +35,12 @@ fetch("members.json")
 var savedHero = localStorage.getItem('hero');
 heroesArr.forEach(e => heroDropdown.innerHTML += `<option value=${e.replaceAll(" ", "_")} ${e === savedHero ? 'selected' : ''}>${e}</option>`);
 
-let myAPI_KEY = local_API_KEY || API_KEY;
+let myAPI_KEY = "";
+if (local_API_KEY) {
+  myAPI_KEY = local_API_KEY;
+} else {
+  myAPI_KEY = API_KEY;
+}
 
 // FETCH GRAPH QL
 async function fetchGraphQL(operationsDoc, operationName, variables) {
